@@ -31,4 +31,18 @@ public class StudentServiceImpl implements StudentService {
         );
         return savedStudentDTO;
     }
+
+    @Override
+    public StudentDTO getByStudCode(String studCode) {
+        Student student = studentRepo.findByStudCode(studCode);
+        StudentDTO studentDTO = new StudentDTO(
+                student.getId(),
+                student.getStudFName(),
+                student.getStudLName(),
+                student.getStudDescription(),
+                student.getStudEmail(),
+                student.getStudCode()
+        );
+        return studentDTO;
+    }
 }
